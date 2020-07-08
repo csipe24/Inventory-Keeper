@@ -1,7 +1,7 @@
 {
   "name": "Inventory-Keeper",
   "version": "1.0.0",
-  "description": "",
+  "description": "Project 2",
   "main": "server.js",
   "scripts": {
     "test": "npm run lint",
@@ -10,9 +10,17 @@
     "fix": "eslint --fix .",
     "watch": "nodemon server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csipe24/Inventory-Keeper.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csipe24/Inventory-Keeper/issues"
+  },
+  "homepage": "https://github.com/csipe24/Inventory-Keeper#readme",
   "dependencies": {
     "bcryptjs": "2.4.3",
     "express": "^4.17.0",
@@ -23,13 +31,19 @@
     "sequelize": "^5.8.6"
   },
   "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
     "cross-env": "^5.2.0",
-    "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.2",
     "mocha": "^5.2.0",
     "prettier": "^1.13.7"
   }
 }
+
