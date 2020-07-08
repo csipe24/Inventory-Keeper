@@ -7,7 +7,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-require("routeTBD")(app);
+// require("routeTBD")(app);
 
 db.sequelize.sync({}).then(() => {
   app.listen(PORT, () => {
