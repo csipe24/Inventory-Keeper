@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const models = require("../models/index");
 const dev = {
   status: "In development"
 };
@@ -7,7 +8,9 @@ const dev = {
 
 router.get("/api/items", (req, res) => {
   console.log("Read Items");
-  res.json(dev);
+  models.Item.findAll({}).then(function(results) {
+    res.json(results);
+  });
 });
 
 router.post("/api/items", (req, res) => {
@@ -22,7 +25,9 @@ router.delete("/api/items/:id", (req, res) => {
 
 router.get("/api/categories", (req, res) => {
   console.log("Read categories");
-  res.json(dev);
+  models.Category.findAll({}).then(function(results) {
+    res.json(results);
+  });
 });
 
 router.post("/api/categories", (req, res) => {
