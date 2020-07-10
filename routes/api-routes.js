@@ -8,7 +8,7 @@ const dev = {
 
 router.get("/api/items", (req, res) => {
   console.log("Read Items");
-  models.Item.findAll({}).then(function(results) {
+  models.Item.findAll({}).then(results => {
     res.json(results);
   });
 });
@@ -25,7 +25,7 @@ router.delete("/api/items/:id", (req, res) => {
 
 router.get("/api/categories", (req, res) => {
   console.log("Read categories");
-  models.Category.findAll({}).then(function(results) {
+  models.Category.findAll({}).then(results => {
     res.json(results);
   });
 });
