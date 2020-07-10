@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1>Inventory Keeper</h1>
+    </div>
+</div>
+
+<div class="container">
+    <div class="jumbotron">
+        <div class ="row">
+            <div class="col-6">
+                <h3>In Stock</h3>
+                    <ul>
+                        {{#each inventory}}
+                        {{#if stock}}
+                        <li>{{item_name}}</li>
+                        {{/if}}
+                        {{/each}}
+                    </ul>
+            </div>
+            <div class="col-6">
+                 <h3>Out of Stock</h3>
+                    <ul>
+                        {{#each inventory}}
+                        {{#unless stock}}
+                        <li>{{item_name}}</li>
+                        {{/unless}}
+                        {{/each}}
+                    </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class ="jumbotron">
+        <h4>Add Inventory</h4>
+        <form id="" method="POST">
+            <input type="text" placeholder="Item Name">
+            <input type="text" placeholder="Item Quantity">
+            <button>Add Item</button>
+        </form>
+    </div>
+</div>
