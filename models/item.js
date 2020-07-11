@@ -11,7 +11,8 @@ module.exports = function(sequelize, DataTypes) {
   Item.associate = function(models) {
     Item.belongsTo(models.Category, {
       foreignKey: {
-        allowNull: false
+        allowNull: false,
+        name: "CategoryId"
       }
     });
   };

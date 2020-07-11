@@ -15,7 +15,16 @@ router.get("/api/items", (req, res) => {
 
 router.post("/api/items", (req, res) => {
   console.log("Create Items");
-  res.json(dev);
+  console.log(req.body);
+  console.log(req.body.item);
+  models.Item.create({
+    item: req.body.item,
+    cost: req.body.cost,
+    quantity: req.body.quantity,
+    CategoryId: req.body.categoryid
+  }).then(results => {
+    res.json(results);
+  });
 });
 
 router.delete("/api/items/:id", (req, res) => {
