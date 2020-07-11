@@ -3,10 +3,10 @@ const db = require("../models/index");
 
 // Placeholder API routes
 
-router.get("/api/items", (req, res) => {
+router.get("/", (req, res) => {
   console.log("Read Items");
-  db.Item.findAll({}).then(results => {
-    res.json(results);
+  db.Item.findAll().then(results => {
+    res.render("index", { items: results });
   });
 });
 

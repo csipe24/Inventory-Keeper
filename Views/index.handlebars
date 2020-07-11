@@ -9,22 +9,28 @@
         <div class ="row">
             <div class="col-6">
                 <h3>In Stock<i class="fas fa-box"></i></h3>
-                    <ul>
-                        {{#each inventory}}
-                        {{#if stock}}
-                        <li>{{item_name}}</li>
-                        {{/if}}
-                        {{/each}}
-                    </ul>
+            <table>
+                <thead>
+                    <tr>
+                    {{#each items.headers as |headers|}}
+                    <th>{{header}}</th>
+                    {{/each}}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                     {{#each items.tableContent as |c|}}
+                     {{#each items.headers as |h|}}
+                     <td>{{get c h}}</td>
+                     {{/each}}
+                     {{/each}}
+                     </tr>
+                </tbody>
+                </table>
             </div>
             <div class="col-6">
                  <h3>Out of Stock<i class="fas fa-box-open"></i></h3>
                     <ul>
-                        {{#each inventory}}
-                        {{#unless stock}}
-                        <li>{{item_name}}</li>
-                        {{/unless}}
-                        {{/each}}
                     </ul>
             </div>
         </div>
