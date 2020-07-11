@@ -8,7 +8,7 @@
     <div class="jumbotron">
         <div class ="row">
             <div class="col-6">
-                <h3>In Stock</h3>
+                <h3>In Stock<i class="fas fa-box"></i></h3>
                     <ul>
                         {{#each inventory}}
                         {{#if stock}}
@@ -18,7 +18,7 @@
                     </ul>
             </div>
             <div class="col-6">
-                 <h3>Out of Stock</h3>
+                 <h3>Out of Stock<i class="fas fa-box-open"></i></h3>
                     <ul>
                         {{#each inventory}}
                         {{#unless stock}}
@@ -79,7 +79,7 @@
                 <input type="text" id="cost">
             </div>
 
-            <button type="submit">Add Item</button>
+            <button type="submit">Add Item +</button>
         </form>
     </div>
 </div>
