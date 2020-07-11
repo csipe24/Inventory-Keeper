@@ -29,7 +29,13 @@ router.post("/api/items", (req, res) => {
 
 router.delete("/api/items/:id", (req, res) => {
   console.log("Delete Items");
-  res.json(dev);
+  models.Item.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(() => {
+    res.end();
+  });
 });
 
 router.get("/api/categories", (req, res) => {
@@ -46,7 +52,13 @@ router.post("/api/categories", (req, res) => {
 
 router.delete("/api/categories/:id", (req, res) => {
   console.log("Delete categories");
-  res.json(dev);
+  models.Category.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(() => {
+    res.end();
+  });
 });
 
 module.exports = router;
