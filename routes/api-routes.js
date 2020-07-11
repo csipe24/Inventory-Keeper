@@ -6,6 +6,7 @@ const db = require("../models/index");
 router.get("/", (req, res) => {
   console.log("Read Items");
   db.Item.findAll().then(results => {
+    console.log(results);
     res.render("index", { items: results });
   });
 });

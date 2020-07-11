@@ -12,17 +12,20 @@
             <table>
                 <thead>
                     <tr>
-                    {{#each items.headers as |headers|}}
-                    <th>{{header}}</th>
-                    {{/each}}
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Cost</th>
+                    <th>Category</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                     {{#each items.tableContent as |c|}}
-                     {{#each items.headers as |h|}}
-                     <td>{{get c h}}</td>
-                     {{/each}}
+                    {{#each items}}
+                    <tr> 
+                    <td>{{dataValues.item}}</td>
+                    <td>{{dataValues.quantity}}</td>
+                    <td>{{dataValues.cost}}</td>
+                    <td>{{dataValues.CategoryId}}</td>
+                    <td><button class="sell" data-id="{{id}}">Sell!</button></td>
                      {{/each}}
                      </tr>
                 </tbody>
