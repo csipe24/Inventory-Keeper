@@ -1,3 +1,34 @@
+const categorySelect = $("#categoryId");
+
+function getCategories() {
+  $.get("/api/categories", renderCategoryList);
+}
+
+getCategories();
+
+function renderCategoryList(data) {
+  if (!data.length) {
+    window.location.href = "/categories";
+  }
+  const rowsToAdd = [];
+  for (let i = 0; i < data.length; i++) {
+    rowsToAdd.push(createCategoryRow(data[i]));
+  }
+  categorySelect.empty();
+  console.log(rowsToAdd);
+  console.log(categorySelect);
+  categorySelect.append(rowsToAdd);
+  categorySelect.val(categoryId);
+}
+
+// Creates the Category options in the dropdown
+function createCategoryRow(category) {
+  const listOption = $("<option>");
+  listOption.attr("value", category.id);
+  listOption.text(category.category);
+  return listOption;
+}
+
 $(".create-category").on("submit", event => {
   // Make sure to preventDefault on a submit event.
   event.preventDefault();
@@ -28,9 +59,7 @@ $(".create-item").on("submit", event => {
     item: $("#item")
       .val()
       .trim(),
-    CategoryId: $("#category")
-      .val()
-      .trim(),
+    CategoryId: categorySelect.val(),
     quantity: $("#quantity")
       .val()
       .trim(),
