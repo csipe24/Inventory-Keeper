@@ -17,8 +17,6 @@ app.use(express.static(path.join(__dirname, "./public")));
 app.use(apiRoutes);
 app.use(htmlRoutes);
 
-// require("routeTBD")(app);
-
 db.sequelize.sync({}).then(() => {
   app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
