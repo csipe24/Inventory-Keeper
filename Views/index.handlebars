@@ -33,11 +33,51 @@
 
 <div class="container">
     <div class ="jumbotron">
+        <h4>Add Category</h4>
+    
+        <form class="create-category">
+
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <input type="text" id="category">
+            </div>
+
+            <button type="submit">Add Category</button>
+        
+        </form>
+
+        <br>
+
         <h4>Add Inventory</h4>
-        <form id="" method="POST">
+        {{!-- <form id="" method="POST">
             <input type="text" placeholder="Item Name">
             <input type="text" placeholder="Item Quantity">
-            <button>Add Item +</button>
+            <button>Add Item</button>
+        </form> --}}
+
+        <form class="create-item">
+
+            <div class="form-group">
+                <label for="item">Item Name:</label>
+                <input type="text" id="item">
+            </div>
+
+            <div class="form-group">
+                <label for="item">Category:</label>
+                <input type="text" id="categoryId" >
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">Quantity to add:</label>
+                <input type="text" id="quantity">
+            </div>
+
+            <div class="form-group">
+                <label for="cost">Cost per Item:</label>
+                <input type="text" id="cost">
+            </div>
+
+            <button type="submit">Add Item +</button>
         </form>
     </div>
 </div>
