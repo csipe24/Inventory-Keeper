@@ -6,9 +6,9 @@
 
 <div class="container">
     <div class="jumbotron">
-        <div class ="row">
-            <div class="col-6">
-                <h3>In Stock<i class="fas fa-box"></i></h3>
+        <div class ="row justify-content-center">
+               <h3>In Stock<i class="fas fa-box"></i></h3>
+            <div class="col-12 d-flex justify-content-center">
             <table>
                 <thead>
                     <tr>
@@ -26,19 +26,19 @@
                     <td>{{dataValues.cost}}</td>
                     <td>{{dataValues.CategoryId}}</td>
                     <td><button class="sell" data-id="{{id}}">Sell!</button></td>
+                    <td><button class="remove" data-id="{{id}}">Remove</button></td>
+                    <td><form>
+                        <input type="number" id="quantity" name="price">
+                        <button class="updatePrice" data-id="{{id}}">Update Price</button></td>
+                    </form>
+                    </td>
                      {{/each}}
                      </tr>
                 </tbody>
                 </table>
             </div>
-            <div class="col-6">
-                 <h3>Out of Stock<i class="fas fa-box-open"></i></h3>
-                    <ul>
-                    </ul>
-            </div>
         </div>
     </div>
-</div>
 
 <div class="container">
     <div class ="jumbotron">
