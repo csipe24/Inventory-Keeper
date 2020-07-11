@@ -7,9 +7,6 @@ function getCategories() {
 getCategories();
 
 function renderCategoryList(data) {
-  if (!data.length) {
-    window.location.href = "/categories";
-  }
   const rowsToAdd = [];
   for (let i = 0; i < data.length; i++) {
     rowsToAdd.push(createCategoryRow(data[i]));
