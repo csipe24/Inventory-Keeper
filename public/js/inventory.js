@@ -1,4 +1,4 @@
-const categorySelect = $("#categoryId");
+const categorySelect = $(".categoryId");
 
 function getCategories() {
   $.get("/api/categories", renderCategoryList);
@@ -7,6 +7,7 @@ function getCategories() {
 getCategories();
 
 function renderCategoryList(data) {
+  console.log("Categories" + data);
   const rowsToAdd = [];
   for (let i = 0; i < data.length; i++) {
     rowsToAdd.push(createCategoryRow(data[i]));
@@ -89,13 +90,18 @@ $(".remove").on("click", function(event) {
   });
 });
 
-$(".update").on("click", function(event) {
+$("#save").on("click", function(event) {
   event.preventDefault();
-  const itemId = $(this).data("id");
+  console.log($(this).data("value"));
+  const itemId = $(this).data("value");
   const updateRoute = "/api/items/" + itemId;
-  const itemQuantity = $(this).data("quantity");
-  const itemCost = $(this).data("cost");
+  const itemName = $(this).data("#editItem");
+  const itemCategoryId = $(this).data("#editCategoryId");
+  const itemQuantity = $(this).data("#editQuantity");
+  const itemCost = $(this).data("#editCost");
   const itemData = {
+    item: itemName,
+    CategoryId: itemCategoryId,
     quantity: itemQuantity,
     cost: itemCost
   };
@@ -104,6 +110,23 @@ $(".update").on("click", function(event) {
     url: updateRoute,
     data: itemData
   }).then(() => {
+    // itemName.empty();
+    // itemCategoryId.empty();
+    // itemCost.empty();
+    // itemQuantity.empty();
     location.reload();
+  });
+});
+
+$("#editItem").on("show.bs.modal", event => {
+  const id = $(event.relatedTarget).data("id");
+  console.log("event" + event.relatedTarget);
+  $.get("/api/items/" + id, data => {
+    console.log("Modal Item " + id + data.Category.category);
+    $("#editItemName").val(data.item);
+    $("#editCategoryId").val(data.Category.category);
+    $("#editQuantity").val(data.quantity);
+    $("#editCost").val(data.cost);
+    $("#save").attr("data-value", id);
   });
 });

@@ -5,9 +5,35 @@ const db = require("../models/index");
 
 router.get("/", (req, res) => {
   console.log("Read Items");
-  db.Item.findAll().then(results => {
-    console.log(results);
-    res.render("index", { items: results });
+  db.Item.findAll({
+    include: [
+      {
+        model: db.Category
+      }
+    ]
+  }).then(results => {
+    res.render("index", { items: JSON.parse(JSON.stringify(results)) });
+  });
+});
+
+router.get("/api/items", (req, res) => {
+  console.log("Read all items");
+  db.Item.findAll({
+    include: [{ model: db.Category }]
+  }).then(results => {
+    res.json(results);
+  });
+});
+
+router.get("/api/items/:id", (req, res) => {
+  console.log("Read one item ");
+  db.Item.findOne({
+    include: [{ model: db.Category }],
+    where: {
+      id: req.params.id
+    }
+  }).then(results => {
+    res.json(results);
   });
 });
 
@@ -34,10 +60,10 @@ router.delete("/api/items/:id", (req, res) => {
 router.put("/api/items/:id", (req, res) => {
   db.Item.update(
     {
-      item: req.body.item,
-      quantity: req.body.quantity,
-      cost: req.body.cost,
-      CategoryId: req.body.CategoryId
+      item: req.body.itemName,
+      quantity: req.body.itemQuantity,
+      cost: req.body.itemCost,
+      CategoryId: req.body.itemCategoryId
     },
     {
       where: {
