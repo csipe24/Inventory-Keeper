@@ -12,12 +12,12 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "./public")));
-app.use(apiRoutes);
-app.use(htmlRoutes);
 
 // Require Routes
 const apiRoutes = require("./routes/api-routes");
 const htmlRoutes = require("./routes/html-routes");
+app.use(apiRoutes);
+app.use(htmlRoutes);
 
 // Setting Up Handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
