@@ -1,10 +1,10 @@
-const categorySelect = $(".categoryId");
+// Script File to add functionality to front end
 
+// Using JQuery to get and render categories to page
+const categorySelect = $(".categoryId");
 function getCategories() {
   $.get("/api/categories", renderCategoryList);
 }
-
-getCategories();
 
 function renderCategoryList(data) {
   console.log("Categories" + data);
@@ -19,6 +19,8 @@ function renderCategoryList(data) {
   categorySelect.val(categoryId);
 }
 
+getCategories();
+
 // Creates the Category options in the dropdown
 function createCategoryRow(category) {
   const listOption = $("<option>");
@@ -27,32 +29,29 @@ function createCategoryRow(category) {
   return listOption;
 }
 
+// JQUERY to add submit function adding category to database
 $(".create-category").on("submit", event => {
-  // Make sure to preventDefault on a submit event.
   event.preventDefault();
-
   const newCategory = {
     category: $("#category")
       .val()
       .trim()
   };
-
-  console.log("Submit");
+  console.log("Creating Category");
   // Send the POST request.
   $.ajax("/api/categories", {
     type: "POST",
     data: newCategory
   }).then(() => {
-    console.log("created new category");
-    // Reload the page to get the updated list
+    console.log("Created New Category");
+    // Reload the page to update front end
     location.reload();
   });
 });
 
+// JQUERY to add submit function adding item to database
 $(".create-item").on("submit", event => {
-  // Make sure to preventDefault on a submit event.
   event.preventDefault();
-
   const newItem = {
     item: $("#item")
       .val()
@@ -65,19 +64,19 @@ $(".create-item").on("submit", event => {
       .val()
       .trim()
   };
-
+  console.log("Creating Item");
   // Send the POST request.
   $.ajax("/api/items", {
     type: "POST",
     data: newItem
   }).then(() => {
-    console.log("created new item");
-    // Reload the page to get the updated list
+    console.log("Created New Item");
+    // Reload the page to update List
     location.reload();
   });
 });
 
-// Delete Button
+// JQUERY to add on click function to remove an item
 $(".remove").on("click", function(event) {
   event.preventDefault();
   const itemId = $(this).data("id");
@@ -86,10 +85,12 @@ $(".remove").on("click", function(event) {
     method: "DELETE",
     url: updateRoute
   }).then(() => {
+    // Reload the page to update List
     location.reload();
   });
 });
 
+// JQUERY to add on click function for updating/saving updated item info
 $("#save").on("click", function(event) {
   event.preventDefault();
   console.log($(this).data("value"));
@@ -118,6 +119,7 @@ $("#save").on("click", function(event) {
   });
 });
 
+// On Click Event to display Bootstrap Modal containing specific item info
 $("#editItem").on("show.bs.modal", event => {
   const id = $(event.relatedTarget).data("id");
   console.log("event" + event.relatedTarget);
