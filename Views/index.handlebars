@@ -21,11 +21,13 @@
                         <tbody>
                             {{#each items}}
                             <tr> 
-                            <td>{{dataValues.item}}</td>
-                            <td>{{dataValues.quantity}}</td>
-                            <td>{{dataValues.cost}}</td>
-                            <td>{{dataValues.CategoryId}}</td>
-                            <td><button class="remove" data-id="{{dataValues.id}}">Remove</button></td>
+                            <td>{{item}}</td>
+                            <td>{{quantity}}</td>
+                            <td>{{cost}}</td>
+                            <td>{{Category.category}}</td>
+                            <td><button type="button" class="edit" data-id="{{id}}" data-toggle="modal" data-target="#editItem">Edit</button></td>
+                            <td><button class="remove" data-id="{{id}}">Remove</button></td>                            
+                            </td>
                             {{/each}}
                             </tr>
                         </tbody>
@@ -58,7 +60,7 @@
                     </div>
                     <div class="form-group">
                         <label for="categoryId">Select Category:</label>
-                        <select class="form-control" id="categoryId"></select>
+                        <select class="form-control categoryId" id="categoryId"></select>
                     </div>
                     <div class="form-group">
                         <label for="quantity">Quantity to add:</label>
@@ -73,4 +75,42 @@
             </div>
         </div>
     </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editItem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="Edit-Item">Edit Item</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form class="edit-item">
+            <div class="form-group">
+                <label for="item">Item Name:</label>
+                <input type="text" id="editItemName">
+            </div>
+            <div class="form-group">
+                <label for="categoryId">Category:</label>
+                <select class="form-control categoryId selectpicker" id="editCategoryId"></select>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity:</label>
+                <input type="text" id="editQuantity">
+            </div>
+            <div class="form-group">
+                <label for="cost">Cost per Item:</label>
+                <input type="text" id="editCost">
+            </div>            
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="save">Save changes</button>
+    </div>
+    </div>
+</div>
 </div>
