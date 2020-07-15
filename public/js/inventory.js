@@ -75,3 +75,35 @@ $(".create-item").on("submit", event => {
     location.reload();
   });
 });
+
+// Delete Button
+$(".remove").on("click", function(event) {
+  event.preventDefault();
+  const itemId = $(this).data("id");
+  const updateRoute = "/api/items/" + itemId;
+  $.ajax({
+    method: "DELETE",
+    url: updateRoute
+  }).then(() => {
+    location.reload();
+  });
+});
+
+$(".update").on("click", function(event) {
+  event.preventDefault();
+  const itemId = $(this).data("id");
+  const updateRoute = "/api/items/" + itemId;
+  const itemQuantity = $(this).data("quantity");
+  const itemCost = $(this).data("cost");
+  const itemData = {
+    quantity: itemQuantity,
+    cost: itemCost
+  };
+  $.ajax({
+    method: "PUT",
+    url: updateRoute,
+    data: itemData
+  }).then(() => {
+    location.reload();
+  });
+});
