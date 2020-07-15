@@ -45,7 +45,7 @@ router.put("/api/items/:id", (req, res) => {
       }
     }
   ).then(result => {
-    if (result.changedRows === 0) {
+    if (result[0] === 0) {
       // If no rows were changed, then the ID must not exist, so 404
       res.status(404).end();
     } else {
@@ -80,6 +80,26 @@ router.delete("/api/categories/:id", (req, res) => {
     }
   }).then(() => {
     res.end();
+  });
+});
+
+router.put("/api/categories/:id", (req, res) => {
+  db.Category.update(
+    {
+      category: req.body.category
+    },
+    {
+      where: {
+        id: req.params.id
+      }
+    }
+  ).then(result => {
+    if (result[0] === 0) {
+      // If no rows were changed, then the ID must not exist, so 404
+      res.status(404).end();
+    } else {
+      res.status(200).end();
+    }
   });
 });
 
