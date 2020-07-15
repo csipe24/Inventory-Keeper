@@ -31,6 +31,29 @@ router.delete("/api/items/:id", (req, res) => {
   });
 });
 
+router.put("/api/items/:id", (req, res) => {
+  db.Item.update(
+    {
+      item: req.body.item,
+      quantity: req.body.quantity,
+      cost: req.body.cost,
+      CategoryId: req.body.CategoryId
+    },
+    {
+      where: {
+        id: req.params.id
+      }
+    }
+  ).then(result => {
+    if (result.changedRows === 0) {
+      // If no rows were changed, then the ID must not exist, so 404
+      res.status(404).end();
+    } else {
+      res.status(200).end();
+    }
+  });
+});
+
 router.get("/api/categories", (req, res) => {
   console.log("Read categories");
   db.Category.findAll({}).then(results => {
