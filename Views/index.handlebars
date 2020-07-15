@@ -25,13 +25,7 @@
                             <td>{{dataValues.quantity}}</td>
                             <td>{{dataValues.cost}}</td>
                             <td>{{dataValues.CategoryId}}</td>
-                            <td><button class="sell" data-id="{{dataValues.id}}">Sell!</button></td>
                             <td><button class="remove" data-id="{{dataValues.id}}">Remove</button></td>
-                            <td><form>
-                                <input type="number" id="quantity" name="price">
-                                <button class="updatePrice" data-id="{{dataValues.id}}">Update Price</button></td>
-                            </form>
-                            </td>
                             {{/each}}
                             </tr>
                         </tbody>
