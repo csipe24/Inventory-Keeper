@@ -58,7 +58,7 @@ $(".create-item").on("submit", event => {
       .val()
       .trim(),
     CategoryId: categorySelect.val(),
-    quantity: $("#quantity")
+    quantity: $("#itemQuantity")
       .val()
       .trim(),
     cost: $("#cost")
