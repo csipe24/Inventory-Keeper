@@ -3,6 +3,10 @@ body {
     background-position: center;
 }
 
+.container {
+    width: 40%;
+}
+
 .jumbotron {
     text-align: center;
     border-radius: 0rem;
@@ -30,4 +34,9 @@ p, ul, input, button {
     background-color: khaki;
     border: 1px solid black;
     display: inline-block;
+}
+
+.form-control:focus{
+    background-color: khaki;
+    border: 1px solid black;
 }
