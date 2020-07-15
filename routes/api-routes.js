@@ -1,8 +1,10 @@
+//Require Dependencies/Models
 const router = require("express").Router();
 const db = require("../models/index");
 
-// Placeholder API routes
+// Routes
 
+// GET route to grab all records of items
 router.get("/", (req, res) => {
   console.log("Read Items");
   db.Item.findAll({
@@ -25,6 +27,7 @@ router.get("/api/items", (req, res) => {
   });
 });
 
+// Get route for 1 specific item
 router.get("/api/items/:id", (req, res) => {
   console.log("Read one item ");
   db.Item.findOne({
@@ -37,6 +40,7 @@ router.get("/api/items/:id", (req, res) => {
   });
 });
 
+// POST route to create new item
 router.post("/api/items", (req, res) => {
   console.log("Create Items");
   console.log(req.body);
@@ -46,6 +50,7 @@ router.post("/api/items", (req, res) => {
   });
 });
 
+// DELETE route to delete item from database
 router.delete("/api/items/:id", (req, res) => {
   console.log("Delete Items");
   db.Item.destroy({
@@ -57,6 +62,7 @@ router.delete("/api/items/:id", (req, res) => {
   });
 });
 
+// PUT route to edit a specific item
 router.put("/api/items/:id", (req, res) => {
   db.Item.update(
     {
@@ -80,6 +86,7 @@ router.put("/api/items/:id", (req, res) => {
   });
 });
 
+// GET route to get all categories
 router.get("/api/categories", (req, res) => {
   console.log("Read categories");
   db.Category.findAll({}).then(results => {
@@ -87,6 +94,7 @@ router.get("/api/categories", (req, res) => {
   });
 });
 
+// POST route to create new category
 router.post("/api/categories", (req, res) => {
   console.log("Create categories");
   console.log(req.body);
@@ -98,6 +106,7 @@ router.post("/api/categories", (req, res) => {
   });
 });
 
+// DELETE route to delete category, currently unused
 router.delete("/api/categories/:id", (req, res) => {
   console.log("Delete categories");
   db.Category.destroy({
@@ -109,6 +118,7 @@ router.delete("/api/categories/:id", (req, res) => {
   });
 });
 
+// PUT route to edit categories
 router.put("/api/categories/:id", (req, res) => {
   db.Category.update(
     {

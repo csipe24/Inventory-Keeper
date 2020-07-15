@@ -1,3 +1,4 @@
+// Create Item model
 module.exports = function(sequelize, DataTypes) {
   const Item = sequelize.define("Item", {
     item: {
@@ -8,6 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     cost: DataTypes.INTEGER
   });
 
+  // Create Link between Item/Category Models
   Item.associate = function(models) {
     Item.belongsTo(models.Category, {
       foreignKey: {
