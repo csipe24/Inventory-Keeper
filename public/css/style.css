@@ -8,6 +8,7 @@ body {
 .navbar .navbar-brand {
     font-family: 'Anton', sans-serif;
     font-style: italic;
+    font-size: xx-large;
     color: rgb(46, 34, 27);
 }
 
@@ -15,10 +16,7 @@ body {
     background-image: url(../images/cardboard-box.jpg);
     padding: 1.5rem;
     justify-content: center;
-}
-
-.container {
-    width: 40%;
+    margin-bottom: 30px;
 }
 
 .jumbotron {
@@ -26,8 +24,6 @@ body {
     border-radius: 0rem;
     color: rgb(46, 34, 27);
     background-image: url(../images/cardboard-box.jpg);
-    margin-top: .5rem;
-    margin-bottom: .5rem;
 }
 
 h1, h3, h4 {
