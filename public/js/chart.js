@@ -16,7 +16,7 @@ function renderChart(data) {
     const itemResults = items.map(items => items.CategoryId);
     console.log(itemResults);
 
-    const chartEl = document.querySelector("#Chart");
+    // const chartEl = document.querySelector("#Chart");
     const categoryData = {
       labels: categoryResults,
 
@@ -28,8 +28,7 @@ function renderChart(data) {
       ]
     };
 
-    const chart = new Chart({
-      parent: chartEl,
+    const chart = new frappe.Chart("#Chart",{
       title: "Inventory Percentages",
       type: "percentage",
       data: categoryData,
