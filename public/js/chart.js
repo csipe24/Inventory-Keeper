@@ -15,7 +15,6 @@ function renderChart(data) {
     console.log(items);
     const itemResults = items.map(items => items.CategoryId);
     console.log(itemResults);
-    count(itemResults);
 
     const chartEl = document.querySelector("#Chart");
     const categoryData = {
