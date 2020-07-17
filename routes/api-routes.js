@@ -1,7 +1,6 @@
 //Require Dependencies/Models
 const router = require("express").Router();
 const db = require("../models/index");
-const counter = require("count-array-values");
 
 // Routes
 // GET route to grab all records of items
