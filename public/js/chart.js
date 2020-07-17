@@ -1,42 +1,52 @@
+const categoryData = {
+  labels: [],
+
+  datasets: [
+    {
+      values: [],
+      chartType: "percentage"
+    }
+  ]
+};
+
 // Percentage Data Graph
 function getChart() {
-  $.get("/api/categories", renderChart);
+  $.get("/api/charts", renderChart);
 }
 
 getChart();
 
 // NPM Package
 function renderChart(data) {
-  $.get("/api/itemInfo", itemCount => {
-    // Map through array of objects for all values
-    const categoryResults = data.map(value => value.category);
-    console.log(categoryResults);
-    console.log(itemCount);
-    const itemCountValues = itemCount.map(data => data.count);
-    console.log(itemCountValues);
+  console.log(data);
+  data.forEach(data => {
+    // Push into categoryData.labels
+    categoryData.labels.push(data.category);
+    // Push into categoryData.datasets[0].
+    if (data.Items.length === 1) {
+      categoryData.datasets[0].values.push(data.Items[0].quantity);
+    } else {
+      categoryData.datasets[0].values.push(
+        data.Items.reduce(
+          (accumulator, currentValue) => accumulator.quantity + currentValue.quantity
+        )
+      );
+    }
+  }); 
+  //   console.log(data.Items.reduce((accumulator, currentValue) => accumulator.quantity + currentValue.quantity));
+  // });
 
-    // const chartEl = document.querySelector("#Chart");
-    const categoryData = {
-      labels: categoryResults,
+  console.log(categoryData);
 
-      datasets: [
-        {
-          values: itemCountValues,
-          chartType: "percentage"
-        }
-      ]
-    };
-
-    const chart = new frappe.Chart("#Chart",{
-      title: "Inventory Percentages",
-      type: "percentage",
-      data: categoryData,
-      height: 200,
-      colors: ["red", "orange", "yellow", "green", "blue", "violet", "black"],
-      barOptions: {
-        height: 15,
-        depth: 5
-      }
-    });
+  const chart = new frappe.Chart("#Chart", {
+    title: "Inventory Percentages",
+    type: "percentage",
+    data: categoryData,
+    height: 300,
+    colors: ["red", "orange", "yellow", "green", "blue", "violet", "black"],
+    barOptions: {
+      height: 40,
+      depth: 5
+    }
   });
 }
