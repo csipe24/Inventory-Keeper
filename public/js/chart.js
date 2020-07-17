@@ -7,14 +7,13 @@ getChart();
 
 // NPM Package
 function renderChart(data) {
-  $.get("/api/items", items => {
+  $.get("/api/itemInfo", itemCount => {
     // Map through array of objects for all values
     const categoryResults = data.map(value => value.category);
     console.log(categoryResults);
-
-    console.log(items);
-    const itemResults = items.map(items => items.CategoryId);
-    console.log(itemResults);
+    console.log(itemCount);
+    const itemCountValues = itemCount.map(data => data.count);
+    console.log(itemCountValues);
 
     // const chartEl = document.querySelector("#Chart");
     const categoryData = {
@@ -22,7 +21,7 @@ function renderChart(data) {
 
       datasets: [
         {
-          values: [20, 10, 20],
+          values: itemCountValues,
           chartType: "percentage"
         }
       ]
