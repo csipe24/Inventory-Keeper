@@ -1,9 +1,9 @@
 //Require Dependencies/Models
 const router = require("express").Router();
 const db = require("../models/index");
+const counter = require("count-array-values");
 
 // Routes
-
 // GET route to grab all records of items
 router.get("/", (req, res) => {
   console.log("Read Items");
@@ -137,6 +137,30 @@ router.put("/api/categories/:id", (req, res) => {
       res.status(200).end();
     }
   });
+});
+
+router.get("/api/itemInfo", (req, res) => {
+  console.log("Getting Array Data");
+  db.Item.findAll({
+    include: [{ model: db.Category }]
+  })
+    .then(items => {
+      const itemResults = items.map(items => items.CategoryId);
+      console.log(itemResults);
+      return itemResults;
+    })
+    .then(itemResults => {
+      const itemStringResults = itemResults.map(String);
+      return itemStringResults;
+    })
+    .then(itemStringResults => {
+      const itemCount = counter(itemStringResults);
+      console.log(itemCount);
+      return itemCount;
+    })
+    .then(itemCount => {
+      res.json(itemCount);
+    });
 });
 
 module.exports = router;
