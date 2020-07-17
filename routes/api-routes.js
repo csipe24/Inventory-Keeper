@@ -149,33 +149,4 @@ router.get("/api/charts", (req, res) => {
   });
 });
 
-// router.get("/api/itemInfo", (req, res) => {
-//   console.log("Getting Array Data");
-//   db.Item.findAll({
-//     // include: [{ model: db.Category }]
-//   })
-//     .then(items => {
-//       const itemResults = items.map(
-//         items => new Object({ category: items.CategoryId, quantity: (items.quantity)})
-//       );
-//       return itemResults;
-//     })
-//     .then(itemResults => {
-//       const result = itemResults.reduce((result, item) => {
-//         const existing = result.find(x => x.category === item.category);
-//         if (existing) {
-//           existing.quantity += item.quantity;
-//         } else {
-//           result.push(item);
-//         }
-//         console.log(result);
-//         return result;
-//       }, []);
-//       return result;
-//     })
-//     .then(results => {
-//       res.json(results);
-//     });
-// });
-
 module.exports = router;

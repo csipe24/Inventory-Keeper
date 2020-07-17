@@ -20,46 +20,41 @@ getChart();
 function renderChart(data) {
   console.log(data);
   data.forEach(data => {
-    // Push into categoryData.labels
-    categoryData.labels.push(data.category);
-    // Push into categoryData.datasets[0].
-    if (data.Items.length === 1) {
-      categoryData.datasets[0].values.push(data.Items[0].quantity);
-    } else {
-      categoryData.datasets[0].values.push(
-        data.Items.reduce(
-          (accumulator, currentValue) => accumulator.quantity + currentValue.quantity
-        )
-      );
+    if (data.Items.length > 0) {
+      // Push into categoryData.labels
+      categoryData.labels.push(data.category);
+      // Push into categoryData.datasets[0].
+      if (data.Items.length === 1) {
+        categoryData.datasets[0].values.push(data.Items[0].quantity);
+      } else {
+        categoryData.datasets[0].values.push(
+          data.Items.reduce(
+            (accumulator, currentValue) => accumulator.quantity + currentValue.quantity
+          )
+        );
+      }
     }
-  }); 
-  //   console.log(data.Items.reduce((accumulator, currentValue) => accumulator.quantity + currentValue.quantity));
-  // });
+  });
 
   console.log(categoryData);
 
-
   const chart = new frappe.Chart("#Chart", {
-    title: "Inventory Percentages",
+    title: "Number of Products Per Category",
     type: "percentage",
     data: categoryData,
-    height: 300,
-    colors: ["red", "orange", "yellow", "green", "blue", "violet", "black"],
+    height: 200,
+    colors: [
+      "#042278",
+      "#a87fff",
+      "#d60542",
+      "#3267d4",
+      "#8c94ac",
+      "#13CA91",
+      "black"
+    ],
     barOptions: {
       height: 40,
       depth: 5
     }
-=======
-    const chart = new frappe.Chart("#Chart", {
-      title: "Inventory Percentages",
-      type: "percentage",
-      data: categoryData,
-      height: 200,
-      colors: ["red", "orange", "yellow", "green", "blue", "violet", "black"],
-      barOptions: {
-        height: 15,
-        depth: 5
-      }
-    });
   });
 }
