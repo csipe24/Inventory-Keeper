@@ -96,20 +96,24 @@ $("#save").on("click", function(event) {
   console.log($(this).data("value"));
   const itemId = $(this).data("value");
   const updateRoute = "/api/items/" + itemId;
-  const itemName = $(this).data("#editItem");
-  const itemCategoryId = $(this).data("#editCategoryId");
-  const itemQuantity = $(this).data("#editQuantity");
-  const itemCost = $(this).data("#editCost");
-  const itemData = {
-    item: itemName,
-    CategoryId: itemCategoryId,
-    quantity: itemQuantity,
-    cost: itemCost
+  const newItemEdit = {
+    item: $("#editItemName")
+      .val()
+      .trim(),
+    CategoryId: $("#editCategoryId").val(),
+    quantity: $("#editQuantity")
+      .val()
+      .trim(),
+    cost: $("#editCost")
+      .val()
+      .trim()
   };
+
+  console.log(newItemEdit);
   $.ajax({
-    method: "PUT",
+    type: "PUT",
     url: updateRoute,
-    data: itemData
+    data: newItemEdit
   }).then(() => {
     // itemName.empty();
     // itemCategoryId.empty();
@@ -126,7 +130,8 @@ $("#editItem").on("show.bs.modal", event => {
   $.get("/api/items/" + id, data => {
     console.log("Modal Item " + id + data.Category.category);
     $("#editItemName").val(data.item);
-    $("#editCategoryId").val(data.Category.category);
+    console.log(data.Category);
+    $("#editCategoryId").val(data.Category.id);
     $("#editQuantity").val(data.quantity);
     $("#editCost").val(data.cost);
     $("#save").attr("data-value", id);
