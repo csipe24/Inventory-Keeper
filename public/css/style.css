@@ -1,57 +1,77 @@
 body {
-    background-image: url(../images/inventory_background_alt.jpg);
+    background-image: url(../images/space_bg_1.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-size: 1920px 1080px;
 }
 
 .navbar .navbar-brand {
     font-family: 'Anton', sans-serif;
     font-style: italic;
     font-size: xx-large;
-    color: rgb(46, 34, 27);
+    color: rgb(102, 102, 102);
 }
 
 .bg-dark {
-    background-image: url(../images/cardboard-box.jpg);
-    padding: 1.5rem;
+    color: rgb(235, 235 , 235);
     justify-content: center;
     margin-bottom: 30px;
 }
 
 .jumbotron {
+    background-color: rgba(253, 245, 239, .9);
     text-align: center;
-    border-radius: 0rem;
-    color: rgb(46, 34, 27);
-    background-image: url(../images/cardboard-box.jpg);
+    border-radius: 5rem;
+    color: rgb(102, 102, 102);
 }
 
 h1, h3, h4 {
     font-family: 'Anton', sans-serif;
 }
 
-label, p, ul, input {
-    font-family: 'Montserrat', sans-serif;
+.title {
+    font-family: 'Anton', sans-serif;
+    font-size: x-large;
+    color: rgb(102, 102, 102);
 }
 
-p, ul, input, button {
-    background-color: khaki;
+.legend-dot, .legend-dataset-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+    color: rgb(102, 102, 102);
+}
+
+label, p, ul, input {
+    font-family: 'Montserrat', sans-serif;
 }
 
 .form-control {
     width: 40%;
     border-radius: 0rem;
-    background-color: khaki;
-    border: 1px solid black;
     display: inline-block;
 }
 
 .form-control:focus{
-    background-color: khaki;
-    border: 1px solid black;
     display: inline-block;
 }
 
 .create-category {
     padding-bottom: 5%;
+}
+
+.edit {
+    background-color: rgba(0, 255, 255, .2);
+}
+
+.edit:hover {
+    background-color: rgb(0, 255, 255);
+}
+
+.remove {
+    background-color: rgba(255, 98, 71, .2);
+}
+
+.remove:hover {
+    background-color: rgb(255, 98, 71);
 }
