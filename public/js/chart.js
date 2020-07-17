@@ -27,7 +27,7 @@ function renderChart(data) {
       ]
     };
 
-    const chart = new frappe.Chart("#Chart",{
+    const chart = new frappe.Chart("#Chart", {
       title: "Inventory Percentages",
       type: "percentage",
       data: categoryData,
