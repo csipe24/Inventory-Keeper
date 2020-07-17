@@ -66,10 +66,10 @@ router.delete("/api/items/:id", (req, res) => {
 router.put("/api/items/:id", (req, res) => {
   db.Item.update(
     {
-      item: req.body.itemName,
-      quantity: req.body.itemQuantity,
-      cost: req.body.itemCost,
-      CategoryId: req.body.itemCategoryId
+      item: req.body.item,
+      quantity: req.body.quantity,
+      cost: req.body.cost,
+      CategoryId: req.body.CategoryId
     },
     {
       where: {

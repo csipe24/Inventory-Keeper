@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-// Link Category/Item Models
+  // Link Category/Item Models
   Category.associate = models => {
     models.Category.hasMany(models.Item, {
       onDelete: "CASCADE"

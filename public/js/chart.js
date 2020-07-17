@@ -38,6 +38,7 @@ function renderChart(data) {
 
   console.log(categoryData);
 
+
   const chart = new frappe.Chart("#Chart", {
     title: "Inventory Percentages",
     type: "percentage",
@@ -48,5 +49,17 @@ function renderChart(data) {
       height: 40,
       depth: 5
     }
+=======
+    const chart = new frappe.Chart("#Chart", {
+      title: "Inventory Percentages",
+      type: "percentage",
+      data: categoryData,
+      height: 200,
+      colors: ["red", "orange", "yellow", "green", "blue", "violet", "black"],
+      barOptions: {
+        height: 15,
+        depth: 5
+      }
+    });
   });
 }
