@@ -75,3 +75,36 @@ label, p, ul, input {
 .remove:hover {
     background-color: rgb(255, 98, 71);
 }
+
+.modal-content {
+    border-radius: 3rem;
+    background-color: rgba(253, 245, 239, .9);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.modal-title {
+    font-family: 'Anton', sans-serif;
+}
+
+.btn {
+    border-radius: 0rem;
+    color: black;
+}
+
+.btn-secondary {
+    background-color: rgba(255, 98, 71, .2);
+}
+
+.btn-secondary:hover {
+    background-color: rgb(255, 98, 71);
+    color: black;
+}
+
+.btn-primary {
+    background-color: rgba(0, 255, 255, .2);
+}
+
+.btn-primary:hover {
+    background-color: rgb(0, 255, 255);
+    color: black;
+}
