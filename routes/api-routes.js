@@ -139,28 +139,43 @@ router.put("/api/categories/:id", (req, res) => {
   });
 });
 
-router.get("/api/itemInfo", (req, res) => {
-  console.log("Getting Array Data");
-  db.Item.findAll({
-    include: [{ model: db.Category }]
-  })
-    .then(items => {
-      const itemResults = items.map(items => items.CategoryId);
-      console.log(itemResults);
-      return itemResults;
-    })
-    .then(itemResults => {
-      const itemStringResults = itemResults.map(String);
-      return itemStringResults;
-    })
-    .then(itemStringResults => {
-      const itemCount = counter(itemStringResults);
-      console.log(itemCount);
-      return itemCount;
-    })
-    .then(itemCount => {
-      res.json(itemCount);
-    });
+// Get route for chart data
+router.get("/api/charts", (req, res) => {
+  console.log("New Route");
+  db.Category.findAll({
+    include: db.Item
+  }).then(results => {
+    res.json(results);
+  });
 });
+
+// router.get("/api/itemInfo", (req, res) => {
+//   console.log("Getting Array Data");
+//   db.Item.findAll({
+//     // include: [{ model: db.Category }]
+//   })
+//     .then(items => {
+//       const itemResults = items.map(
+//         items => new Object({ category: items.CategoryId, quantity: (items.quantity)})
+//       );
+//       return itemResults;
+//     })
+//     .then(itemResults => {
+//       const result = itemResults.reduce((result, item) => {
+//         const existing = result.find(x => x.category === item.category);
+//         if (existing) {
+//           existing.quantity += item.quantity;
+//         } else {
+//           result.push(item);
+//         }
+//         console.log(result);
+//         return result;
+//       }, []);
+//       return result;
+//     })
+//     .then(results => {
+//       res.json(results);
+//     });
+// });
 
 module.exports = router;
