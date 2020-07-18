@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Password",
+    "password": "Loggers123",
     "database": "inventory",
     "host": "127.0.0.1",
     "dialect": "mysql"
@@ -14,12 +14,9 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "port": 3306,
+    "use_env_variable": "DATABASE_URL",
     "dialect": "mysql"
   }
+
 }
 
