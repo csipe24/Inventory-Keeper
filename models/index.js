@@ -10,22 +10,10 @@ const db = {};
 
 let sequelize;
 
-if (process.env.HEROKU_POSTGRESQL_ROSE_URL) {
-  // the application is executed on Heroku ... use the postgres database
-  sequelize = new Sequelize(process.env.HEROKU_POSTGRESQL_ROSE_URL, {
-    dialect: "postgres",
-    protocol: 'postgres',
-    port: match[4],
-    host: match[3],
-    logging: true //false
-  })
-  } else {
-  sequelize = new Sequelize(
-    config.database,
-    config.username,
-    config.password,
-      config
-  );
+if (config.use_env_variable) {
+  var sequelize = new Sequelize(process.env[config.use_env_variable], config);
+} else {
+  var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
 fs.readdirSync(__dirname)
