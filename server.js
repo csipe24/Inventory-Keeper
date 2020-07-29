@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Require Routes
-const apiRoutes = require("./dist/index.js");
+const apiRoutes = require("./dist/index");
 const htmlRoutes = require("./routes/html-routes");
 app.use(apiRoutes);
 app.use(htmlRoutes);
