@@ -3,6 +3,9 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const path = require("path");
 
+const compression = require("compression");
+app.use(compression({ filter: shouldCompress }));
+
 // Port Config & Models for Sync
 const PORT = process.env.PORT || 8080;
 const db = require("./models");
