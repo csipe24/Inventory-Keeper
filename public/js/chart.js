@@ -20,18 +20,21 @@ getChart();
 function renderChart(data) {
   console.log(data);
   data.forEach(data => {
-    if (data.Items.length > 0) {
+    if (data.Items.length === 0) {
+      console.log("No Items In Category");
+    } else if (data.Items.length > 0) {
       // Push into categoryData.labels
       categoryData.labels.push(data.category);
       // Push into categoryData.datasets[0].
       if (data.Items.length === 1) {
         categoryData.datasets[0].values.push(data.Items[0].quantity);
       } else {
-        categoryData.datasets[0].values.push(
+      let result = data.Items
+      categoryData.datasets[0].values.push(
           data.Items.reduce(
-            (accumulator, currentValue) => accumulator.quantity + currentValue.quantity
-          )
-        );
+          (total, amount) => total.quantity + amount.quantity
+        )
+      );
       }
     }
   });
