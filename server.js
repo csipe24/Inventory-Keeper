@@ -3,18 +3,21 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const path = require("path");
 
-const compression = require("compression");
-app.use(compression());
-
 // Port Config & Models for Sync
 const PORT = process.env.PORT || 8080;
 const db = require("./models");
 
 // Create Express App and Config Middleware for Data Parsing
 const app = express();
+
+const compression = require("compression");
+app.use(compression());
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+
+
 
 // Require Routes
 const apiRoutes = require("./public/index");
