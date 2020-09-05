@@ -4,7 +4,7 @@
 
 Welcome to NASA Wholesale's inventory management application! This is a great open source application to help you manage your brand new space storefront!
 
-Our app will use a database to create, read, update and delete items. The application is based on selling items of different categories which calculates the amount left in stock along with the current price. Since the application is deployed via Heroku, it allows users with an internet connection to use the appliciation on any web browser!
+Our app will use a database to create, read, update and delete items. The application is based on selling items of different categories which calculates the amount left in stock along with the current price. Since the application is deployed via Heroku, it allows users with an internet connection to use the application on any web browser!
 
 ## Usage
 
